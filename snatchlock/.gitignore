@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Output + uploads (kept locally, not pushed)
+uploads/
+outputs/
+*.mp4
+*.avi
+*.mov
+
+# Local environment
+.env
+.env*.local
+
+# System + logs
+.DS_Store
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# TypeScript
+*.tsbuildinfo
+
+# Expo / Metro / mobile
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.orig.
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.metro-health-check*

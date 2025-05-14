@@ -21,6 +21,13 @@ jobs:
       - run:
           name: Build Next.js App
           command: npm run build
+          
+      - run:
+          name: Run OWASP Dependency Check
+          command: |
+            wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
+            unzip dependency-check-8.4.0-release.zip
+            ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out reports
    
       - snyk/scan:
           monitor-on-build: true

@@ -11,33 +11,25 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm install || true
+          command: |
+            cd snatchlock
+            npm install || true
       - run:
           name: Run OWASP Dependency Check
           command: |
+            cd snatchlock
             wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip || true
             unzip dependency-check-8.4.0-release.zip || true
-            ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out reports || true
+            ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out ../reports || true
       - snyk/scan:
+          project-folder: snatchlock
           monitor-on-build: true
           fail-on-issues: false
       - store_artifacts:
           path: reports
           destination: dependency-check-report
 
-  zap_scan:
-    docker:
-      - image: zaproxy/zap-stable
-    working_directory: /zap/wrk
-    steps:
-      - checkout
-      - run:
-          name: Run ZAP Baseline Scan
-          command: |
-            zap-baseline.py -t https://hoobank.netlify.app -r zap-report.html || true
-      - store_artifacts:
-          path: /zap/wrk/zap-report.html
-          destination: zap-report
+ 
 
   docker_push:
     docker:
@@ -47,14 +39,14 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker Image
-          command: docker build -t codenameab/snatchlock:securex . || true
+          command: docker build -t codenameab/snatchlock:securex snatchlock
       - run:
           name: Login to Docker Hub
-          command: echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin || true
+          command: echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
       - run:
           name: Push Docker Image
-          command: docker push codenameab/snatchlock:securex || true
-     
+          command: docker push codenameab/snatchlock:securex
+
   bandit_scan:
     docker:
       - image: python:3.11
@@ -66,7 +58,7 @@ jobs:
       - run:
           name: Run Bandit Scan
           command: |
-            bandit -r test-cases/bandit -f html -o bandit-report.html || true
+            bandit -r snatchlock/test-cases/bandit -f html -o bandit-report.html || true
       - store_artifacts:
           path: bandit-report.html
           destination: bandit-report

@@ -7,6 +7,7 @@ jobs:
   secure_build:
     docker:
       - image: cimg/node:20.0
+    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - run:
@@ -17,12 +18,13 @@ jobs:
           command: |
             wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip || true
             unzip dependency-check-8.4.0-release.zip || true
-            ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out reports || true
+            ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out ../reports || true
       - snyk/scan:
+          project-path: .
           monitor-on-build: true
           fail-on-issues: false
       - store_artifacts:
-          path: reports
+          path: ../reports
           destination: dependency-check-report
 
   zap_scan:
@@ -42,22 +44,23 @@ jobs:
   docker_push:
     docker:
       - image: cimg/node:20.0
+    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Build Docker Image
           command: docker build -t snatchlock:securex . || true
+      - snyk/scan:
+          docker-image-name: snatchlock:securex
+          monitor-on-build: true
+          fail-on-issues: false
       - run:
           name: Login to Docker Hub
           command: echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin || true
       - run:
           name: Push Docker Image
           command: docker push snatchlock:securex || true
-      - snyk/scan:
-          docker-image-name: snatchlock:securex
-          monitor-on-build: true
-          fail-on-issues: false
 
   bandit_scan:
     docker:

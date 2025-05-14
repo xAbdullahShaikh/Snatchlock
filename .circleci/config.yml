@@ -4,33 +4,47 @@ orbs:
   snyk: snyk/snyk@1.6.0
 
 jobs:
-  secure_build:
+  build:
     docker:
       - image: cimg/node:20.0
-    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - run:
           name: Install Dependencies
-          command: npm install || true
+          command: npm install
+      - run:
+          name: Build Next.js App
+          command: npm run build
       - run:
           name: Run OWASP Dependency Check
           command: |
-            wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip || true
-            unzip dependency-check-8.4.0-release.zip || true
-            ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out ../reports || true
-            
+            wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip
+            unzip dependency-check-8.4.0-release.zip
+            ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out reports
       - snyk/scan:
           monitor-on-build: true
           fail-on-issues: false
       - store_artifacts:
           path: reports
           destination: dependency-check-report
-          
-  docker_push:
+
+  zap_scan:
+    docker:
+      - image: zaproxy/zap-stable
+    working_directory: /zap/wrk
+    steps:
+      - checkout
+      - run:
+          name: Run ZAP Baseline Scan
+          command: |
+            zap-baseline.py -t https://hoobank.netlify.app -r zap-report.html || true
+      - store_artifacts:
+          path: /zap/wrk/zap-report.html
+          destination: zap-report
+
+  docker_build:
     docker:
       - image: cimg/node:20.0
-    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - setup_remote_docker
@@ -43,16 +57,19 @@ jobs:
       - run:
           name: Push Docker Image
           command: docker push codenameab/snatchlock:securex
+      - snyk/scan:
+          docker-image-name: codenameab/snatchlock:securex
+          monitor-on-build: true
+          fail-on-issues: false
 
   bandit_scan:
     docker:
       - image: python:3.11
-    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - run:
           name: Install Bandit
-          command: pip install bandit || true
+          command: pip install bandit
       - run:
           name: Run Bandit Scan
           command: |
@@ -63,10 +80,13 @@ jobs:
 
 workflows:
   version: 2
-  secure_pipeline:
+  secure_build_pipeline:
     jobs:
-      - secure_build
-      - docker_push:
+      - build
+      - zap_scan:
           requires:
-            - secure_build
+            - build
+      - docker_build:
+          requires:
+            - build
       - bandit_scan

@@ -19,10 +19,13 @@ jobs:
             wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip || true
             unzip dependency-check-8.4.0-release.zip || true
             ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out ../reports || true
-      - snyk/scan:
-          project-path: .
-          monitor-on-build: true
-          fail-on-issues: false
+      - run:
+          name: Run Snyk CLI Manually
+          command: |
+            npm install -g snyk
+            snyk auth "$SNYK_TOKEN"
+            snyk test || true
+            snyk monitor || true
       - store_artifacts:
           path: ../reports
           destination: dependency-check-report
@@ -51,10 +54,13 @@ jobs:
       - run:
           name: Build Docker Image
           command: docker build -t snatchlock:securex . || true
-      - snyk/scan:
-          docker-image-name: snatchlock:securex
-          monitor-on-build: true
-          fail-on-issues: false
+      - run:
+          name: Run Snyk Scan on Docker Image
+          command: |
+            npm install -g snyk
+            snyk auth "$SNYK_TOKEN"
+            snyk container test snatchlock:securex || true
+            snyk container monitor snatchlock:securex || true
       - run:
           name: Login to Docker Hub
           command: echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin || true

@@ -21,10 +21,15 @@ jobs:
             wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip || true
             unzip dependency-check-8.4.0-release.zip || true
             ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out ../reports || true
-      - snyk/scan:
-          project-folder: snatchlock
-          monitor-on-build: true
-          fail-on-issues: false
+            
+      - run:
+          name: Run Snyk Code Scan
+          command: |
+            cd snatchlock
+            npm install -g snyk
+            snyk auth "$SNYK_TOKEN"
+            snyk test || true
+            snyk monitor || true
       - store_artifacts:
           path: reports
           destination: dependency-check-report

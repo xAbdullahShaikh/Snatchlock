@@ -14,6 +14,11 @@ jobs:
           command: npm install
                    npm install sharp
       - run:
+          name: Run ESLint (non-blocking)
+          command: |
+            npx eslint . --ext .js,.jsx,.ts,.tsx || echo "⚠️ ESLint warnings found, but build will continue"
+              
+      - run:
           name: Build Next.js App
           command: npm run build
       - run:

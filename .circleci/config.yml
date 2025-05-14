@@ -7,44 +7,36 @@ jobs:
   secure_build:
     docker:
       - image: cimg/node:20.0
+    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - run:
           name: Install Dependencies
-          command: |
-            cd snatchlock
-            npm install || true
+          command: npm install || true
       - run:
           name: Run OWASP Dependency Check
           command: |
-            cd snatchlock
             wget https://github.com/jeremylong/DependencyCheck/releases/download/v8.4.0/dependency-check-8.4.0-release.zip || true
             unzip dependency-check-8.4.0-release.zip || true
             ./dependency-check/bin/dependency-check.sh --scan . --format HTML --out ../reports || true
             
-      - run:
-          name: Run Snyk Code Scan
-          command: |
-            cd snatchlock
-            npm install -g snyk
-            snyk auth "$SNYK_TOKEN"
-            snyk test || true
-            snyk monitor || true
+      - snyk/scan:
+          monitor-on-build: true
+          fail-on-issues: false
       - store_artifacts:
           path: reports
           destination: dependency-check-report
-
- 
-
+          
   docker_push:
     docker:
       - image: cimg/node:20.0
+    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - setup_remote_docker
       - run:
           name: Build Docker Image
-          command: docker build -t codenameab/snatchlock:securex snatchlock
+          command: docker build -t codenameab/snatchlock:securex .
       - run:
           name: Login to Docker Hub
           command: echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USERNAME" --password-stdin
@@ -55,6 +47,7 @@ jobs:
   bandit_scan:
     docker:
       - image: python:3.11
+    working_directory: ~/project/snatchlock
     steps:
       - checkout
       - run:
@@ -63,7 +56,7 @@ jobs:
       - run:
           name: Run Bandit Scan
           command: |
-            bandit -r snatchlock/test-cases/bandit -f html -o bandit-report.html || true
+            bandit -r test-cases/bandit -f html -o bandit-report.html || true
       - store_artifacts:
           path: bandit-report.html
           destination: bandit-report
@@ -73,9 +66,6 @@ workflows:
   secure_pipeline:
     jobs:
       - secure_build
-
-          requires:
-            - secure_build
       - docker_push:
           requires:
             - secure_build

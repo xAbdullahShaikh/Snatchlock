@@ -54,14 +54,7 @@ jobs:
       - run:
           name: Push Docker Image
           command: docker push codenameab/snatchlock:securex || true
-      - run:
-          name: Snyk Scan Docker Image
-          command: |
-            npm install -g snyk
-            snyk auth "$SNYK_TOKEN"
-            snyk container test codenameab/snatchlock:securex || true
-            snyk container monitor codenameab/snatchlock:securex || true
-
+     
   bandit_scan:
     docker:
       - image: python:3.11

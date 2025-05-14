@@ -9,18 +9,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
-import Login from "@/components/login"; 
-import { auth } from "@/firebase"; // Import Firebase authentication
+import { auth } from "@/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const sk = "/sklogo.png";
 
-export default function SignupPage() {
+interface SignupPageProps {
+  switchToLogin: () => void;
+}
+
+export default function SignupPage({ switchToLogin }: SignupPageProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLogin, setIsLogin] = useState(false); 
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,7 +33,7 @@ export default function SignupPage() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log("User signed up:", userCredential.user);
       alert("Account created successfully!");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Signup error:", error);
       alert(error.message);
     } finally {
@@ -39,11 +41,7 @@ export default function SignupPage() {
     }
   };
 
-  if (isLogin) {
-    return <Login />;
-  }
-
-  return (
+  return(
     <div className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 flex items-center justify-center px-4">
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <div className="flex justify-center mb-4">
@@ -95,15 +93,31 @@ export default function SignupPage() {
           </CardContent>
 
           <CardFooter className="justify-center">
-            <p className="text-cyan-400">
-              Already have an account?{" "}
-              <button className="hover:underline text-cyan-400" onClick={() => setIsLogin(true)}>
-                Login
-              </button>
-            </p>
-          </CardFooter>
+              <p className="text-cyan-400">
+                Already have an account?{" "}
+                <button className="hover:underline text-cyan-400" onClick={switchToLogin}>
+                  Login
+                </button>
+              </p>
+            </CardFooter>
+
         </Card>
       </motion.div>
     </div>
   );
 }
+
+
+
+
+
+/*updated this
+<CardFooter className="justify-center">
+  <p className="text-cyan-400">
+    Already have an account?{" "}
+    <button className="hover:underline text-cyan-400" onClick={() => setIsLogin(true)}>
+      Login
+    </button>
+  </p>
+</CardFooter>
+*/

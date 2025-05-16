@@ -46,7 +46,8 @@
 * **Real-Time Notifications**
 
   * Sends alert messages with geo-coordinates using **Twilio API**.
-![twilio alert](https://github.com/user-attachments/assets/0682300f-64fe-4889-91b7-4a857d54a770)
+
+![twilio alert](https://github.com/user-attachments/assets/2fd1c06a-d2a4-4bcc-acee-ed426a56b9eb)
 
 
 ###  Technologies Used

@@ -1,6 +1,6 @@
 # Snatchlock
 
-<img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" width="250"/>
+<img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" />
 
 
 <p align="center">

@@ -2,6 +2,7 @@
 
 **SnatchLock** is a cutting-edge crime prevention platform developed as part of a Final Year Project at FAST-NUCES. It integrates **real-time AI-based surveillance**, **blockchain**, and **decentralized storage** to intelligently detect criminal activity and securely preserve digital evidence.
 
+<img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" align="center"/>
 ### Key Features
 
 * **AI-Powered Crime Detection**
@@ -55,10 +56,7 @@
 
 ---
 
-Would you like me to format this into a full `README.md` template with sections like installation, usage, screenshots, etc.?
 
-
-<img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" align="center"/>
 
 <p align="center">
   

@@ -1,4 +1,4 @@
-## 🛡️ SnatchLock: AI & Blockchain-Powered Crime Detection and Evidence Management System
+## 🛡️ SnatchLock: AI-Powered Crime Detection and Evidence Management System
 
 **SnatchLock** is a cutting-edge crime prevention platform developed as part of a Final Year Project at FAST-NUCES. It integrates **real-time AI-based surveillance**, **blockchain**, and **decentralized storage** to intelligently detect criminal activity and securely preserve digital evidence.
 
@@ -14,7 +14,11 @@
 
   * Captures and stores images, videos, and metadata (timestamp, geolocation) on **IPFS** (InterPlanetary File System).
   * Secures evidence integrity by recording the IPFS hash on the **Ethereum blockchain** via **MetaMask** and smart contracts.
-
+    
+<img src="https://github.com/user-attachments/assets/e336ab5f-929f-4faa-bd7e-39b5bbfb582e"  />
+<img src="https://github.com/user-attachments/assets/c5acb742-3c86-4ef8-98c2-9bbddd15e253"  />
+<img src="https://github.com/user-attachments/assets/e51b983a-cb6f-4964-8fff-97cdc3277529"  />
+  
 * **User Roles & Access**
 
   * Admins: Manage users and system configuration.
@@ -63,11 +67,7 @@
   <img src="https://github.com/user-attachments/assets/8c8b62ff-5280-47ec-a5ec-a781462309fd" />
   <img src="https://github.com/user-attachments/assets/9e393e57-e272-43f3-9c6f-48d1db1f4fb3" />
 </p>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/e336ab5f-929f-4faa-bd7e-39b5bbfb582e"  />
-  <img src="https://github.com/user-attachments/assets/c5acb742-3c86-4ef8-98c2-9bbddd15e253"  />
-  <img src="https://github.com/user-attachments/assets/e51b983a-cb6f-4964-8fff-97cdc3277529"  />
-</p>
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/916b5775-ec48-410d-8804-76d21e49457e"  />
   <img src="https://github.com/user-attachments/assets/4134f55f-03f0-4a0d-abd7-753a184460d6"  />

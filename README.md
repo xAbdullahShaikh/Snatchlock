@@ -1,5 +1,7 @@
 # Snatchlock
 
+<img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" width="250"/>
+
 
 <p align="center">
  <img width="104" alt="logo2" src="https://github.com/user-attachments/assets/61855a99-7359-4905-be2e-1b2ea37dcced" />
@@ -7,7 +9,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" width="250"/>
+  
   <img src="https://github.com/user-attachments/assets/8c8b62ff-5280-47ec-a5ec-a781462309fd" width="250"/>
   <img src="https://github.com/user-attachments/assets/9e393e57-e272-43f3-9c6f-48d1db1f4fb3" width="250"/>
 </p>

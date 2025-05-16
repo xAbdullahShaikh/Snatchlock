@@ -27,10 +27,11 @@
   * Admins: Manage users and system configuration.
   * Law Enforcement Officers: Access surveillance feeds, incident logs, and respond to alerts.
   * Citizens: Report crimes through the integrated **CPLC Complaint System**.
-
+    
+<img src="https://github.com/user-attachments/assets/bb3bf39f-0eef-40da-a27d-2902f27eef9a" />
 
 <img src="https://github.com/user-attachments/assets/8c8b62ff-5280-47ec-a5ec-a781462309fd" />
-<img src="https://github.com/user-attachments/assets/9e393e57-e272-43f3-9c6f-48d1db1f4fb3" />
+
 <img src="https://github.com/user-attachments/assets/916b5775-ec48-410d-8804-76d21e49457e"  />
 
 

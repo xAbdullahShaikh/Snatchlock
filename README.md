@@ -7,7 +7,7 @@
 
 * **AI-Powered Crime Detection**
 
-  * Combines **YOLOv8** for real-time object detection (e.g., weapons, human activity) and **CLIPViT** for detecting suspicious behavior.
+  * Combines **YOLOv8** for real-time object detection (e.g., weapons, human activity) and **VADCLIP** for detecting suspicious behavior.
   * Triggers real-time alerts to law enforcement and users upon detection.
 
  <img src="https://github.com/user-attachments/assets/4134f55f-03f0-4a0d-abd7-753a184460d6"  />
@@ -28,6 +28,12 @@
   * Law Enforcement Officers: Access surveillance feeds, incident logs, and respond to alerts.
   * Citizens: Report crimes through the integrated **CPLC Complaint System**.
 
+
+<img src="https://github.com/user-attachments/assets/8c8b62ff-5280-47ec-a5ec-a781462309fd" />
+<img src="https://github.com/user-attachments/assets/9e393e57-e272-43f3-9c6f-48d1db1f4fb3" />
+<img src="https://github.com/user-attachments/assets/916b5775-ec48-410d-8804-76d21e49457e"  />
+
+
 * **Secure Infrastructure**
 
   * Enforced with **AES-256 encryption**, **TLS/SSL**, **multi-factor authentication**, and **role-based access control (RBAC)**.
@@ -39,6 +45,8 @@
 * **Real-Time Notifications**
 
   * Sends alert messages with geo-coordinates using **Twilio API**.
+![twilio alert](https://github.com/user-attachments/assets/0682300f-64fe-4889-91b7-4a857d54a770)
+
 
 ###  Technologies Used
 
@@ -49,7 +57,7 @@
 * **Storage**: IPFS
 * **Containerization**: Docker, Docker Compose
 * **Notifications**: Twilio SMS API
-
+  
 ### 🛠 System Architecture
 
 1. Live CCTV Feed → AI Model (YOLOv8 + CLIPVAD)
@@ -65,18 +73,5 @@
 * Edge computing support for local CCTV processing
 
 
-  
-  <img src="https://github.com/user-attachments/assets/8c8b62ff-5280-47ec-a5ec-a781462309fd" />
-  <img src="https://github.com/user-attachments/assets/9e393e57-e272-43f3-9c6f-48d1db1f4fb3" />
-
-
-
-  <img src="https://github.com/user-attachments/assets/916b5775-ec48-410d-8804-76d21e49457e"  />
- 
-
-  <img src="https://github.com/user-attachments/assets/d8bb23a9-815b-4713-97ee-6d2468ae71cd"  />
-
-
-  
 
 

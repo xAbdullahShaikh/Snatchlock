@@ -1,7 +1,5 @@
 #                                                                                         Snatchlock
-<p align="center">
- <img width="104" alt="logo2" src="https://github.com/user-attachments/assets/61855a99-7359-4905-be2e-1b2ea37dcced" />
-</p>
+
 <img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" />
 
 

@@ -10,6 +10,9 @@
   * Combines **YOLOv8** for real-time object detection (e.g., weapons, human activity) and **CLIPViT** for detecting suspicious behavior.
   * Triggers real-time alerts to law enforcement and users upon detection.
 
+ <img src="https://github.com/user-attachments/assets/4134f55f-03f0-4a0d-abd7-753a184460d6"  />
+ <img src="https://github.com/user-attachments/assets/65d04060-57a6-4ae0-9f3a-391f95c7d714"  />
+
 * **Tamper-Proof Evidence Management**
 
   * Captures and stores images, videos, and metadata (timestamp, geolocation) on **IPFS** (InterPlanetary File System).
@@ -29,6 +32,9 @@
 
   * Enforced with **AES-256 encryption**, **TLS/SSL**, **multi-factor authentication**, and **role-based access control (RBAC)**.
   * Built using **Docker** and deployed via **Docker Compose** for modular, containerized deployment.
+    
+<img src="https://github.com/user-attachments/assets/12d12a7c-264e-4962-9d63-a41fbba35701"  />
+<img src="https://github.com/user-attachments/assets/528f6c90-e640-495c-88c2-0acdd1b14090"  />
 
 * **Real-Time Notifications**
 
@@ -58,26 +64,19 @@
 * Continuous ML model retraining with real-time data
 * Edge computing support for local CCTV processing
 
----
 
-
-
-<p align="center">
   
   <img src="https://github.com/user-attachments/assets/8c8b62ff-5280-47ec-a5ec-a781462309fd" />
   <img src="https://github.com/user-attachments/assets/9e393e57-e272-43f3-9c6f-48d1db1f4fb3" />
-</p>
 
-<p align="center">
+
+
   <img src="https://github.com/user-attachments/assets/916b5775-ec48-410d-8804-76d21e49457e"  />
-  <img src="https://github.com/user-attachments/assets/4134f55f-03f0-4a0d-abd7-753a184460d6"  />
-  <img src="https://github.com/user-attachments/assets/65d04060-57a6-4ae0-9f3a-391f95c7d714"  />
-</p>
-<p align="center">
+ 
+
   <img src="https://github.com/user-attachments/assets/d8bb23a9-815b-4713-97ee-6d2468ae71cd"  />
-  <img src="https://github.com/user-attachments/assets/12d12a7c-264e-4962-9d63-a41fbba35701"  />
-  <img src="https://github.com/user-attachments/assets/528f6c90-e640-495c-88c2-0acdd1b14090"  />
+
 
   
-</p>
+
 

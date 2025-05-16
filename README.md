@@ -1,9 +1,64 @@
-<p align="center"><strong><span style="font-size:32px">Snatchlock</span></strong></p>
+## 🛡️ SnatchLock: AI & Blockchain-Powered Crime Detection and Evidence Management System
+
+**SnatchLock** is a cutting-edge crime prevention platform developed as part of a Final Year Project at FAST-NUCES. It integrates **real-time AI-based surveillance**, **blockchain**, and **decentralized storage** to intelligently detect criminal activity and securely preserve digital evidence.
+
+### Key Features
+
+* **AI-Powered Crime Detection**
+
+  * Combines **YOLOv8** for real-time object detection (e.g., weapons, human activity) and **CLIPViT** for detecting suspicious behavior.
+  * Triggers real-time alerts to law enforcement and users upon detection.
+
+* **Tamper-Proof Evidence Management**
+
+  * Captures and stores images, videos, and metadata (timestamp, geolocation) on **IPFS** (InterPlanetary File System).
+  * Secures evidence integrity by recording the IPFS hash on the **Ethereum blockchain** via **MetaMask** and smart contracts.
+
+* **User Roles & Access**
+
+  * Admins: Manage users and system configuration.
+  * Law Enforcement Officers: Access surveillance feeds, incident logs, and respond to alerts.
+  * Citizens: Report crimes through the integrated **CPLC Complaint System**.
+
+* **Secure Infrastructure**
+
+  * Enforced with **AES-256 encryption**, **TLS/SSL**, **multi-factor authentication**, and **role-based access control (RBAC)**.
+  * Built using **Docker** and deployed via **Docker Compose** for modular, containerized deployment.
+
+* **Real-Time Notifications**
+
+  * Sends alert messages with geo-coordinates using **Twilio API**.
+
+###  Technologies Used
+
+* **Frontend**: React.js (Next.js), Tailwind CSS
+* **Backend**: Flask (Python), FastAPI
+* **AI Models**: YOLOv8 (Object Detection), CLIPVAD (Anomaly Detection)
+* **Blockchain**: Ethereum Smart Contracts, MetaMask Integration
+* **Storage**: IPFS
+* **Containerization**: Docker, Docker Compose
+* **Notifications**: Twilio SMS API
+
+### 🛠 System Architecture
+
+1. Live CCTV Feed → AI Model (YOLOv8 + CLIPVAD)
+2. Suspicious Activity Detected → Real-Time Alert + Evidence Captured
+3. Evidence → IPFS (Storage) → IPFS Hash → Ethereum Blockchain (Smart Contract)
+4. MetaMask → Secure Transaction Confirmation
+
+### 📈 Future Enhancements
+
+* Integration with **Google Maps API** for nearest police station routing
+* Web3 login using national digital identity
+* Continuous ML model retraining with real-time data
+* Edge computing support for local CCTV processing
+
+---
+
+Would you like me to format this into a full `README.md` template with sections like installation, usage, screenshots, etc.?
 
 
 <img src="https://github.com/user-attachments/assets/aecd194a-f6f7-4117-aa13-73155020b5d5" align="center"/>
-
-
 
 <p align="center">
   

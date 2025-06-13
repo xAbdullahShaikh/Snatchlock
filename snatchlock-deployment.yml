@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snatchlock
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snatchlock
+  template:
+    metadata:
+      labels:
+        app: snatchlock
+    spec:
+      containers:
+      - name: snatchlock-container
+        image: codenameab/snatchlock:securex
+        ports:
+        - containerPort: 3000  # Change this if your app runs on a different port
